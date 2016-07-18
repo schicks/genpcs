@@ -1,7 +1,7 @@
 import random
 import re
 import sys
-
+import os
 
 def main():
     stats = {1: (4, 3, 2, 2), 2: (4, 3, 3, 2), 3: (4, 4, 3, 2), 4: (5, 4, 3, 2), 5: (5, 5, 3, 2), 6: (4, 4, 4, 3),
@@ -11,7 +11,10 @@ def main():
         , 10: (3, 8)}
     freedice = {1: (2, 4), 2: (2, 6), 3: (4, 6), 4: (1, 8), 5: (2, 8), 6: (1, 10)}
     # dice tables for generation
-    f = open(sys.argv[1], 'w')
+    if len(sys.argv) > 1:
+        f = open(sys.argv[1], 'w')
+    else:
+        f = open(os.path.expanduser('~')+'/Desktop/npc.txt', 'w')
     for char in range(6):
         f.write('Name:\n')
         f.write('Stats:\n')
